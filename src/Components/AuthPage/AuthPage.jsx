@@ -1,50 +1,56 @@
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
 import './AuthPage.css';
 
 export default function AuthPage() {
-  const [isLogin, setIsLogin] = useState(true);
-  const location = useLocation();
-
-  useEffect(() => {
-    // Detect route path
-    if (location.pathname === '/signup') {
-      setIsLogin(false);
-    } else {
-      setIsLogin(true);
-    }
-  }, [location.pathname]);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <div className="auth-toggle">
-          <button
-            className={isLogin ? 'active' : ''}
-            onClick={() => setIsLogin(true)}
-          >
-            Login
-          </button>
-          <button
-            className={!isLogin ? 'active' : ''}
-            onClick={() => setIsLogin(false)}
-          >
-            Sign Up
-          </button>
-        </div>
-
-        <h2>{isLogin ? 'Welcome Back' : 'Create an Account'}</h2>
-
-        <form className="auth-form">
-          {!isLogin && (
-            <input type="text" placeholder="Full Name" required />
-          )}
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
-          <button type="submit" className="submit-btn">
-            {isLogin ? 'Login' : 'Sign Up'}
-          </button>
+    <div className={`container ${isSignUp ? 'right-panel-active' : ''}`}>
+      <div className="form-container sign-up-container">
+        <form>
+          <h1>Create Account</h1>
+          <div className="social-container">
+            <a href="#"><i className="fab fa-facebook-f"></i></a>
+            <a href="#"><i className="fab fa-google-plus-g"></i></a>
+            <a href="#"><i className="fab fa-linkedin-in"></i></a>
+          </div>
+          <span>or use your email for registration</span>
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <button>Sign Up</button>
         </form>
+      </div>
+
+      <div className="form-container sign-in-container">
+        <form>
+          <h1>Sign in</h1>
+          <div className="social-container">
+            <a href="#"><i className="fab fa-facebook-f"></i></a>
+            <a href="#"><i className="fab fa-google-plus-g"></i></a>
+            <a href="#"><i className="fab fa-linkedin-in"></i></a>
+          </div>
+          <span>or use your account</span>
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <a href="#">Forgot your password?</a>
+          <button>Sign In</button>
+        </form>
+      </div>
+
+      <div className="overlay-container">
+        <div className="overlay">
+          <div className="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>To keep connected with us please login with your personal info</p>
+            <button className="ghost" onClick={() => setIsSignUp(false)}>Sign In</button>
+          </div>
+          <div className="overlay-panel overlay-right">
+            <h1>Hello, Friend!</h1>
+            <p>Enter your personal details and start your journey with us</p>
+            <button className="ghost" onClick={() => setIsSignUp(true)}>Sign Up</button>
+          </div>
+        </div>
       </div>
     </div>
   );
