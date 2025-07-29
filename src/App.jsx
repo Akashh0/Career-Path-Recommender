@@ -4,6 +4,7 @@ import AuthPage from './Components/AuthPage/AuthPage';
 import ParticlesBackground from './Components/ParticlesBackground';
 import CareerRedditFeed from './Components/CareerRedditFeed';
 import './App.css';
+import BottomNav from './Components/BottomNav';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       </div>
       <CareerRedditFeed />
     </div>
+    <BottomNav />
     </>
   );
 }

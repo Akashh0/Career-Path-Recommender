@@ -1,6 +1,7 @@
 .reddit-feed {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 0 2rem;
+  padding-bottom: 40px;
   margin-top: 100px;
   max-height: 90vh;
   overflow-y: auto;
@@ -12,7 +13,8 @@
 .reddit-feed h2 {
   position: sticky;
   top: 0;
-  background: #000; /* Match navbar/bg color */
+  background: rgba(0, 0, 0, 0.555); /* Match navbar/bg color */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   padding: 1rem 0;
   margin: 0;
   z-index: 10;
@@ -62,6 +64,32 @@
   font-size: 0.9rem;
   color: #ff4b2b;
 }
+
+/* ===== Scrollbar Styling for .reddit-feed ===== */
+.reddit-feed::-webkit-scrollbar {
+  width: 10px;
+}
+
+.reddit-feed::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.reddit-feed::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.reddit-feed::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 75, 43, 0.5); /* 🔥 Match the theme */
+}
+
+/* Firefox scrollbar support */
+.reddit-feed {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+
 
 @media (max-width: 768px) {
   .reddit-feed {

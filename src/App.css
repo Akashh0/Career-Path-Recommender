@@ -4,5 +4,5 @@ html, body, #root {
   height: 100%;
   width: 100%;
   background: black; /* Not white! */
-  overflow: hidden;
+  overflow-x: hidden;
 }
