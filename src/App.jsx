@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import CareerNavbar from './Components/NavBar';
 import AuthPage from './Components/AuthPage/AuthPage';
 import ParticlesBackground from './Components/ParticlesBackground';
+import CareerRedditFeed from './Components/CareerRedditFeed';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/signup" element={<AuthPage />} />
         </Routes>
       </div>
+      <CareerRedditFeed />
     </div>
     </>
   );

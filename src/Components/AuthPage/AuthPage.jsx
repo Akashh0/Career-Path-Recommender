@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaFacebookF, FaGooglePlusG, FaLinkedinIn } from 'react-icons/fa';
 import './AuthPage.css';
 
 export default function AuthPage() {
@@ -10,9 +11,9 @@ export default function AuthPage() {
         <form>
           <h1>Create Account</h1>
           <div className="social-container">
-            <a href="#"><i className="fab fa-facebook-f"></i></a>
-            <a href="#"><i className="fab fa-google-plus-g"></i></a>
-            <a href="#"><i className="fab fa-linkedin-in"></i></a>
+            <a href="#"><FaFacebookF /></a>
+            <a href="#"><FaGooglePlusG /></a>
+            <a href="#"><FaLinkedinIn /></a>
           </div>
           <span>or use your email for registration</span>
           <input type="text" placeholder="Name" />
@@ -26,9 +27,9 @@ export default function AuthPage() {
         <form>
           <h1>Sign in</h1>
           <div className="social-container">
-            <a href="#"><i className="fab fa-facebook-f"></i></a>
-            <a href="#"><i className="fab fa-google-plus-g"></i></a>
-            <a href="#"><i className="fab fa-linkedin-in"></i></a>
+            <a href="#"><FaFacebookF /></a>
+            <a href="#"><FaGooglePlusG /></a>
+            <a href="#"><FaLinkedinIn /></a>
           </div>
           <span>or use your account</span>
           <input type="email" placeholder="Email" />
