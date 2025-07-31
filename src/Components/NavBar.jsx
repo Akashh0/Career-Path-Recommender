@@ -1,8 +1,13 @@
 import React from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 
 function Navbar() {
+
+  const navigate = useNavigate();
+
   return (
     <nav className="navbar">
       <div className="navbar-left">
@@ -14,11 +19,11 @@ function Navbar() {
         <span className="app-name">CareerPath</span>
       </div>
       <div className="navbar-right">
-        <Link to="/" className="nav-link">Home</Link>
-        <Link to="/about" className="nav-link">About</Link>
-        <Link to="/login" className="nav-link">Login</Link>
-        <Link to="/signup" className="nav-link">SignUp</Link>
-      </div>
+  <NavLink className="nav-link" to="/">Home</NavLink>
+  <NavLink className="nav-link" to="/about">About</NavLink>
+  <NavLink className="nav-link" to="/login">Login</NavLink>
+  <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
+</div>
     </nav>
   );
 }
