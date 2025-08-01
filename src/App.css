@@ -6,3 +6,7 @@ html, body, #root {
   background: black; /* Not white! */
   overflow-x: hidden;
 }
+
+img[src^="chrome-extension://"] {
+  display: none !important;
+}
