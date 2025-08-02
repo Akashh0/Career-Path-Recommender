@@ -4,7 +4,7 @@ import AuthPage from './Components/AuthPage/AuthPage';
 import ParticlesBackground from './Components/ParticlesBackground';
 import CareerRedditFeed from './Components/CareerRedditFeed';
 import BottomNav from './Components/BottomNav';
-import CareerRecommender from './Components/CareerRecommender';
+import CareerForm from './Components/CareerForm';
 import './App.css';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
           <Route path="/login" element={<AuthPage />} />
           <Route path="/signup" element={<AuthPage />} />
           <Route path="/" element={<CareerRedditFeed />} />
-          <Route path="/career" element={<CareerRecommender />} />
+          <Route path="/career" element={<CareerForm />} />
         </Routes>
       </div>
 
