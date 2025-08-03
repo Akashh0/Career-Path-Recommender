@@ -3,7 +3,6 @@ import './CareerRedditFeed.css';
 
 export default function CareerRedditFeed() {
   const [posts, setPosts] = useState([]);
-  const [selectedPost, setSelectedPost] = useState(null);
   const [subreddit, setSubreddit] = useState("cscareerquestions");
 
   const subredditOptions = [
@@ -31,7 +30,6 @@ export default function CareerRedditFeed() {
           permalink: item.data.permalink
         }));
         setPosts(formatted);
-        setSelectedPost(null);
       })
       .catch(err => console.error("Reddit Fetch Error ❌", err));
   }, [subreddit]);
@@ -60,30 +58,18 @@ export default function CareerRedditFeed() {
         {posts.map(post => (
           <div 
             key={post.id} 
-            className={`reddit-card ${selectedPost?.id === post.id ? 'expanded' : ''}`}
-            onClick={() => setSelectedPost(selectedPost?.id === post.id ? null : post)}
+            className="reddit-card"
+            onClick={() => window.open(`https://reddit.com${post.permalink}`, "_blank")}
           >
             <div className="reddit-header">
               <strong>u/{post.author}</strong>
-              <span className="timestamp">{new Date(post.created_utc * 1000).toLocaleString()}</span>
+              <span className="timestamp">
+                {new Date(post.created_utc * 1000).toLocaleString()}
+              </span>
             </div>
 
             <h3>{post.title}</h3>
-
-            {selectedPost?.id === post.id ? (
-              <>
-                <p>{post.body || 'No content available.'}</p>
-                <a 
-                  href={`https://reddit.com${post.permalink}`} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  View Full Conversation
-                </a>
-              </>
-            ) : (
-              <p>{post.body?.slice(0, 200)}{post.body.length > 200 ? '...' : ''}</p>
-            )}
+            <p>{post.body?.slice(0, 200)}{post.body.length > 200 ? '...' : ''}</p>
 
             <div className="reddit-meta">
               <span>👍 {post.ups}</span>
