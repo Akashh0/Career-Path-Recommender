@@ -12,30 +12,30 @@
 
 /* Left: Input Form */
 .recommendation-form {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   padding: 2rem;
   width: 100%;
   max-width: 400px;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(6px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
   color: #fff;
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
+  gap: 2.7rem;
 }
 
 /* Right: Output */
 .recommendation-result {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 2rem;
   width: 100%;
   max-width: 600px;
   color: #fff;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Inputs */
@@ -54,7 +54,7 @@
   padding: 0.8rem;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(90deg, #4b6cb7, #182848);
+  background: radial-gradient(circle, #9d3ef7, #f82bff);
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -62,7 +62,8 @@
 }
 
 .recommendation-form button:hover {
-  background: linear-gradient(90deg, #355c9b, #142036);
+  background: radial-gradient(circle, #9d3ef7, #f82bff);
+  transform: scale(1.05);
 }
 
 /* Related list */
@@ -75,7 +76,7 @@
 .highlight {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #00ffc3;
+  color: #ffffff;
 }
 
 /* Roadmap preview */
@@ -93,7 +94,7 @@
   display: inline-block;
   margin-top: 1rem;
   padding: 0.7rem 1.2rem;
-  background: linear-gradient(to right, #00c6ff, #0072ff);
+  background: radial-gradient(circle, #9d3ef7, #f82bff);
   color: white;
   font-weight: bold;
   border-radius: 10px;

@@ -35,7 +35,7 @@ export default function CareerForm() {
   return (
     <div className="recommendation-container">
       <form onSubmit={handleSubmit} className="recommendation-form">
-        <h2>📚 Get Your Career Path</h2>
+        <h2>Enter your Interests!</h2>
         <input
           type="text"
           placeholder="Your Interests (e.g., AI, Web Dev)"
@@ -57,10 +57,10 @@ export default function CareerForm() {
 
       {result && (
         <div className="recommendation-result">
-          <h3>🎯 Top Recommendation:</h3>
+          <h3>Best choices you got!:</h3>
           <p className="highlight">{result.recommended_course}</p>
 
-          <h4>📌 Related Courses:</h4>
+          <h3>Related Courses:</h3>
           <ul>
             {result.related_courses.map((course, idx) => (
               <li key={idx}>{course}</li>
@@ -68,13 +68,6 @@ export default function CareerForm() {
           </ul>
 
           <h4>🗺️ Roadmap:</h4>
-          <pre className="roadmap-preview">
-            {Object.entries(result.roadmap).map(([key, value], i) => (
-              <div key={i}>
-                <strong>{key}:</strong> {Array.isArray(value) ? value.join(', ') : typeof value === 'object' ? '[Structured Data]' : value}
-              </div>
-            ))}
-          </pre>
 
           {result.pdf_path && (
           <a

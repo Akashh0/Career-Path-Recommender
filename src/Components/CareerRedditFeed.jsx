@@ -26,7 +26,7 @@ export default function CareerRedditFeed() {
 
   return (
     <div className="reddit-feed">
-      <h2>💼 Career Discussions (Reddit)</h2>
+      <h2>Top Discussions</h2>
       
       <div className="reddit-posts-container">
         {posts.map(post => (
