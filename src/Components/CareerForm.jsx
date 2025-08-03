@@ -76,15 +76,16 @@ export default function CareerForm() {
             ))}
           </pre>
 
+          {result.pdf_path && (
           <a
-            className="download-btn"
-            href="http://localhost:8000/media/courses.pdf"
-            download
-            target="_blank"
-            rel="noopener noreferrer"
+          className="download-btn"
+          href={`http://localhost:8000${result.pdf_path}`}
+          download target="_blank"
+          rel="noopener noreferrer"
           >
-            📥 Download Full PDF Roadmap
+          📥 Download Full PDF Roadmap
           </a>
+        )}
         </div>
       )}
     </div>
