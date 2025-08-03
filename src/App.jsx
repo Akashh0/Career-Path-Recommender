@@ -5,6 +5,7 @@ import ParticlesBackground from './Components/ParticlesBackground';
 import CareerRedditFeed from './Components/CareerRedditFeed';
 import BottomNav from './Components/BottomNav';
 import CareerForm from './Components/CareerForm';
+import SearchPage from './Components/SearchPage';
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/signup" element={<AuthPage />} />
           <Route path="/" element={<CareerRedditFeed />} />
           <Route path="/career" element={<CareerForm />} />
+          <Route path="/explore" element={<SearchPage />} />
         </Routes>
       </div>
 

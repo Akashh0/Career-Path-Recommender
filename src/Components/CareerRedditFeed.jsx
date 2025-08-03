@@ -4,9 +4,20 @@ import './CareerRedditFeed.css';
 export default function CareerRedditFeed() {
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
+  const [subreddit, setSubreddit] = useState("cscareerquestions");
+
+  const subredditOptions = [
+    "cscareerquestions",
+    "learnprogramming",
+    "AskEngineers",
+    "careerguidance",
+    "careerchange",
+    "engineeringstudents",
+    "careeradvice"
+  ];
 
   useEffect(() => {
-    fetch("https://www.reddit.com/r/cscareerquestions/top.json?limit=10")
+    fetch(`https://www.reddit.com/r/${subreddit}/top.json?limit=10`)
       .then(res => res.json())
       .then(data => {
         const formatted = data.data.children.map(item => ({
@@ -20,14 +31,31 @@ export default function CareerRedditFeed() {
           permalink: item.data.permalink
         }));
         setPosts(formatted);
+        setSelectedPost(null);
       })
       .catch(err => console.error("Reddit Fetch Error ❌", err));
-  }, []);
+  }, [subreddit]);
 
   return (
     <div className="reddit-feed">
-      <h2>Top Discussions</h2>
-      
+      <div className="reddit-header-row">
+        <h2>🔥 Top Discussions</h2>
+        <div className="subreddit-selector">
+          <label htmlFor="subreddit">Subreddit:</label>
+          <select
+            id="subreddit"
+            value={subreddit}
+            onChange={(e) => setSubreddit(e.target.value)}
+          >
+            {subredditOptions.map((option, idx) => (
+              <option key={idx} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       <div className="reddit-posts-container">
         {posts.map(post => (
           <div 
