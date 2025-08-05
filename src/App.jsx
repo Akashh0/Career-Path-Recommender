@@ -6,6 +6,7 @@ import CareerRedditFeed from './Components/CareerRedditFeed';
 import BottomNav from './Components/BottomNav';
 import CareerForm from './Components/CareerForm';
 import SearchPage from './Components/SearchPage';
+import PostDetail from './Components/PostDetail';
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/signup" element={<AuthPage />} />
           <Route path="/" element={<CareerRedditFeed />} />
           <Route path="/career" element={<CareerForm />} />
+          <Route path="/post/:id" element={<PostDetail />} />
           <Route path="/explore" element={<SearchPage />} />
         </Routes>
       </div>

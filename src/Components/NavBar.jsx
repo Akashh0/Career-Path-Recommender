@@ -21,8 +21,6 @@ function Navbar() {
       <div className="navbar-right">
   <NavLink className="nav-link" to="/">Home</NavLink>
   <NavLink className="nav-link" to="/about">About</NavLink>
-  <NavLink className="nav-link" to="/login">Login</NavLink>
-  <NavLink className="nav-link" to="/signup">Sign Up</NavLink>
 </div>
     </nav>
   );

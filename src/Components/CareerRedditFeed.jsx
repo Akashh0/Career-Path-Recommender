@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CareerRedditFeed.css';
 
 export default function CareerRedditFeed() {
   const [posts, setPosts] = useState([]);
   const [subreddit, setSubreddit] = useState("cscareerquestions");
+  const navigate = useNavigate();
 
   const subredditOptions = [
     "cscareerquestions",
@@ -56,10 +58,12 @@ export default function CareerRedditFeed() {
 
       <div className="reddit-posts-container">
         {posts.map(post => (
-          <div 
-            key={post.id} 
+          <div
+            key={post.id}
             className="reddit-card"
-            onClick={() => window.open(`https://reddit.com${post.permalink}`, "_blank")}
+            onClick={() =>
+              navigate(`/post/${post.id}`, { state: { post } })
+            }
           >
             <div className="reddit-header">
               <strong>u/{post.author}</strong>
