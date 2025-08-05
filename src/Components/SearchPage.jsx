@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SearchPage.css';
 
 export default function SearchPage() {
   const [topics, setTopics] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [subredditResults, setSubredditResults] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("https://www.reddit.com/r/cscareerquestions/hot.json?limit=15")
@@ -14,6 +16,7 @@ export default function SearchPage() {
           id: item.data.id,
           title: item.data.title,
           permalink: item.data.permalink,
+          subreddit: item.data.subreddit,
         }));
         setTopics(formatted);
       });
@@ -32,7 +35,7 @@ export default function SearchPage() {
           const subs = data.data.children.map(item => ({
             name: item.data.display_name,
             title: item.data.title,
-            url: `https://reddit.com${item.data.url}`,
+            url: item.data.url,
             subscribers: item.data.subscribers,
             icon: item.data.icon_img || null,
           }));
@@ -62,7 +65,7 @@ export default function SearchPage() {
               <div
                 key={sub.name}
                 className="search-result"
-                onClick={() => window.open(sub.url, "_blank")}
+                onClick={() => navigate(`/subreddit/${sub.name}`)}
               >
                 {sub.icon && <img src={sub.icon} alt="" className="sub-icon" />}
                 <div>
@@ -75,21 +78,23 @@ export default function SearchPage() {
         )}
       </div>
 
-      {/* Trending Topics Grid (Unchanged) */}
+      {/* Trending Topics Grid */}
       <div className="trending-grid">
         <h3>Career related topics you can't miss!</h3>
         <div className="grid-container">
-          {topics.map((topic, idx) => (
-            <div
-              key={topic.id}
-              className={`trending-tile tile-${idx % 8}`}
-              onClick={() =>
-                window.open(`https://reddit.com${topic.permalink}`, "_blank")
-              }
-            >
-              <h4>{topic.title}</h4>
-            </div>
-          ))}
+          {topics.map((topic, idx) => {
+            const permalinkParts = topic.permalink.split('/');
+            const postId = permalinkParts[4]; // format: /r/[sub]/comments/[id]/[slug]
+            return (
+              <div
+                key={topic.id}
+                className={`trending-tile tile-${idx % 8}`}
+                onClick={() => navigate(`/topic/${topic.subreddit}/${postId}`)}
+              >
+                <h4>{topic.title}</h4>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
