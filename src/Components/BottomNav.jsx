@@ -12,7 +12,6 @@ export default function BottomNav() {
       <Link to="/" className="nav-btn"><AiFillHome size={22} /></Link>
       <Link to="/explore" className="nav-btn"><FiSearch size={22} /></Link>
       <Link to="/career" className="nav-btn"><MdEditNote size={22} /></Link>
-      <Link to="/profile" className="nav-btn"><FaRegUser size={20} /></Link>
     </div>
   );
 }

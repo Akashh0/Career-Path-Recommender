@@ -20,7 +20,14 @@ function Navbar() {
       </div>
       <div className="navbar-right">
   <NavLink className="nav-link" to="/">Home</NavLink>
-  <NavLink className="nav-link" to="/about">About</NavLink>
+  <a
+    className="nav-link"
+    href="https://akashh0.github.io/My-Portfolio/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    About
+  </a>
 </div>
     </nav>
   );

@@ -1,17 +1,25 @@
 .spotify-search-page {
-  padding: 2rem;
+  padding: 1rem;
+  padding-top: 150px; /* enough gap from fixed navbar */
   color: #fff;
   font-family: 'Segoe UI', sans-serif;
-  margin-top: 90px;
+  padding-bottom: 90px; /* for bottom nav space */
 }
 
 .search-bar-wrapper {
-  margin-bottom: 2rem;
-  position: sticky;
-  top: 70px;
+  position: fixed; /* Changed from sticky to fixed */
+  top: 125px; /* Adjust to match your navbar height */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 700px;
   background: #121212;
-  z-index: 20;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  z-index: 999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
 
 .search-bar-wrapper input {
   width: 100%;
@@ -64,7 +72,9 @@
   color: #bbb;
 }
 
-
+.trending-grid {
+  margin-top: 5rem;
+}
 
 .trending-grid h3 {
   font-size: 1.4rem;
@@ -109,32 +119,14 @@
   }
 }
 
-/* Vibrant Spotify-style backgrounds */
-
-.tile-0 {
-  background: linear-gradient(135deg, #2e1a47, #7b4397); /* purple galaxy */
-}
-.tile-1 {
-  background: linear-gradient(135deg, #173753, #3b8d99); /* deep teal */
-}
-.tile-2 {
-  background: linear-gradient(135deg, #2d2d2d, #434343); /* sleek grey */
-}
-.tile-3 {
-  background: linear-gradient(135deg, #1a2a6c, #b21f1f); /* dark royal */
-}
-.tile-4 {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* deep space blue */
-}
-.tile-5 {
-  background: linear-gradient(135deg, #4b134f, #c94b4b); /* velvet */
-}
-.tile-6 {
-  background: linear-gradient(135deg, #16222a, #3a6073); /* slate blue */
-}
-.tile-7 {
-  background: linear-gradient(135deg, #1c1c1c, #383838); /* subtle dark mode */
-}
+.tile-0 { background: linear-gradient(135deg, #2e1a47, #7b4397); }
+.tile-1 { background: linear-gradient(135deg, #173753, #3b8d99); }
+.tile-2 { background: linear-gradient(135deg, #2d2d2d, #434343); }
+.tile-3 { background: linear-gradient(135deg, #1a2a6c, #b21f1f); }
+.tile-4 { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); }
+.tile-5 { background: linear-gradient(135deg, #4b134f, #c94b4b); }
+.tile-6 { background: linear-gradient(135deg, #16222a, #3a6073); }
+.tile-7 { background: linear-gradient(135deg, #1c1c1c, #383838); }
 
 .selected-topic {
   margin-top: 3rem;
@@ -160,3 +152,48 @@
   text-decoration: underline;
 }
 
+/* ====================== Mobile Styles ====================== */
+@media (max-width: 768px) {
+  .spotify-search-page {
+    padding: 1rem;
+    padding-top: 150px;
+    padding-bottom: 90px;
+  }
+
+  .search-bar-wrapper {
+    padding-top: 0.5rem;
+    background: #121212;
+    padding: 0.6rem;
+  }
+
+  .search-bar-wrapper input {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .search-dropdown {
+    font-size: 0.9rem;
+    max-height: 220px;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .trending-tile {
+    font-size: 0.9rem;
+    min-height: 120px;
+    padding: 1rem;
+  }
+
+  .selected-topic {
+    padding: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .selected-topic .meta {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+}
