@@ -7,7 +7,7 @@ import BottomNav from './Components/BottomNav';
 import CareerForm from './Components/CareerForm';
 import SearchPage from './Components/SearchPage';
 import PostDetail from './Components/PostDetail';
-import SubredditPage from '../SubRedditPage';
+import SubredditPage from './SubRedditPage';
 import RedditTopicPage from './Components/RedditTopicPage';
 import './App.css';
 
