@@ -11,8 +11,8 @@
   top: 125px; /* Adjust to match your navbar height */
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
-  max-width: 700px;
+  width: 100%;
+  max-width: 1900px;
   background: #121212;
   padding: 0.5rem 1rem;
   border-radius: 10px;
