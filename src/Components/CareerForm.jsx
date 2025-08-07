@@ -72,7 +72,7 @@ export default function CareerForm() {
           {result.pdf_path && (
           <a
           className="download-btn"
-          href={`https://careerbackend-n66b.onrender.com${result.pdf_path}`}
+          href={result.pdf_url}
           download target="_blank"
           rel="noopener noreferrer"
           >
