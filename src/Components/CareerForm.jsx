@@ -1,4 +1,3 @@
-// src/pages/RecommendationPage.jsx
 import React, { useState } from 'react';
 import './CareerForm.css';
 
@@ -22,11 +21,14 @@ export default function CareerForm() {
         body: JSON.stringify({ interest, qualification })
       });
 
-      if (!res.ok) throw new Error('Recommendation failed.');
+      if (!res.ok) {
+        throw new Error('⚠️ Backend not responding. Run the Django server locally to test this feature.');
+      }
+
       const data = await res.json();
       setResult(data);
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Something went wrong.');
     } finally {
       setLoading(false);
     }
@@ -36,6 +38,7 @@ export default function CareerForm() {
     <div className="recommendation-container">
       <form onSubmit={handleSubmit} className="recommendation-form">
         <h2>Enter your Interests!</h2>
+
         <input
           type="text"
           placeholder="Your Interests (e.g., AI, Web Dev)"
@@ -43,6 +46,7 @@ export default function CareerForm() {
           onChange={(e) => setInterest(e.target.value)}
           required
         />
+
         <input
           type="text"
           placeholder="Your Current Qualification (e.g., 12th, Diploma)"
@@ -50,11 +54,21 @@ export default function CareerForm() {
           onChange={(e) => setQualification(e.target.value)}
           required
         />
-        <button type="submit" disabled={loading}>{loading ? 'Recommending...' : 'Recommend'}</button>
+
+        <button type="submit" disabled={loading}>
+          {loading ? 'Recommending...' : 'Recommend'}
+        </button>
       </form>
 
-      {error && <p className="error">❌ {error}</p>}
+      {/* Show error or backend warning */}
+      {error && (
+        <p className="warning">
+          ❌ {error} <br />
+          💡 Tip: Clone the project from GitHub and run the backend locally if needed.
+        </p>
+      )}
 
+      {/* Result Section */}
       {result && (
         <div className="recommendation-result">
           <h3>Best choices you got!:</h3>
@@ -81,11 +95,6 @@ export default function CareerForm() {
           )}
         </div>
       )}
-
-      {/* 🚨 Warning if backend isn't working */}
-      <p className="warning">
-        ⚠️ Backend is currently not hosted. Clone the project from GitHub and run the Django server locally to test this feature.
-      </p>
     </div>
   );
 }
