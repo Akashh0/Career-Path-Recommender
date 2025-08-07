@@ -15,7 +15,7 @@ export default function CareerForm() {
     setResult(null);
 
     try {
-      const res = await fetch('http://localhost:3000/api/generate-roadmap', {
+      const res = await fetch('https://careerpathbackend.onrender.com/api/generate-roadmap', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ interest, qualification })
@@ -85,7 +85,7 @@ export default function CareerForm() {
           {result.pdf_path && (
             <a
               className="download-btn"
-              href={`http://localhost:3000${result.pdf_path}`}
+              href={`https://careerpathbackend.onrender.com${result.pdf_path}`}
               download
               target="_blank"
               rel="noopener noreferrer"
