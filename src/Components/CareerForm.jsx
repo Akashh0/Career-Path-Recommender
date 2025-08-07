@@ -68,19 +68,24 @@ export default function CareerForm() {
           </ul>
 
           <h4>🗺️ Roadmap:</h4>
-
-          {result.pdf_path && (
-          <a
-          className="download-btn"
-          href={result.pdf_url}
-          download target="_blank"
-          rel="noopener noreferrer"
-          >
-          📥 Download Full PDF Roadmap
-          </a>
-        )}
+          {result.pdf_url && (
+            <a
+              className="download-btn"
+              href={result.pdf_url}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📥 Download Full PDF Roadmap
+            </a>
+          )}
         </div>
       )}
+
+      {/* 🚨 Warning if backend isn't working */}
+      <p className="warning">
+        ⚠️ Backend is currently not hosted. Clone the project from GitHub and run the Django server locally to test this feature.
+      </p>
     </div>
   );
 }
