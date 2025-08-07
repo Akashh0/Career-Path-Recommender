@@ -16,7 +16,7 @@ export default function CareerForm() {
     setResult(null);
 
     try {
-      const res = await fetch('http://localhost:8000/api/recommend/', {
+      const res = await fetch('https://careerbackend-n66b.onrender.com/api/recommend/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ interest, qualification })
