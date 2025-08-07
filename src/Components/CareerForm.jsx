@@ -15,14 +15,14 @@ export default function CareerForm() {
     setResult(null);
 
     try {
-      const res = await fetch('https://careerbackend-n66b.onrender.com/api/recommend/', {
+      const res = await fetch('http://localhost:3000/api/generate-roadmap', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ interest, qualification })
       });
 
       if (!res.ok) {
-        throw new Error('⚠️ Backend not responding. Run the Django server locally to test this feature.');
+        throw new Error('⚠️ Backend not responding. Make sure Express and Python API are running.');
       }
 
       const data = await res.json();
@@ -60,11 +60,11 @@ export default function CareerForm() {
         </button>
       </form>
 
-      {/* Show error or backend warning */}
+      {/* Show error message */}
       {error && (
         <p className="warning">
           ❌ {error} <br />
-          💡 Tip: Clone the project from GitHub and run the backend locally if needed.
+          💡 Tip: Start the Express backend at port 3000 and ensure the Python API (Flask) is running at port 5000.
         </p>
       )}
 
@@ -82,10 +82,10 @@ export default function CareerForm() {
           </ul>
 
           <h4>🗺️ Roadmap:</h4>
-          {result.pdf_url && (
+          {result.pdf_path && (
             <a
               className="download-btn"
-              href={result.pdf_url}
+              href={`http://localhost:3000${result.pdf_path}`}
               download
               target="_blank"
               rel="noopener noreferrer"
