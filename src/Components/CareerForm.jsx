@@ -1,3 +1,4 @@
+// CareerForm.jsx
 import React, { useState } from 'react';
 import './CareerForm.css';
 
@@ -21,9 +22,7 @@ export default function CareerForm() {
         body: JSON.stringify({ interest, qualification })
       });
 
-      if (!res.ok) {
-        throw new Error('⚠️ Backend not responding. Make sure Express and Python API are running.');
-      }
+      if (!res.ok) throw new Error('⚠️ Could not reach backend.');
 
       const data = await res.json();
       setResult(data);
@@ -60,18 +59,16 @@ export default function CareerForm() {
         </button>
       </form>
 
-      {/* Show error message */}
       {error && (
         <p className="warning">
           ❌ {error} <br />
-          💡 Tip: Start the Express backend at port 3000 and ensure the Python API (Flask) is running at port 5000.
+          💡 Tip: Run Flask (port 5000) and Express (port 3000).
         </p>
       )}
 
-      {/* Result Section */}
       {result && (
         <div className="recommendation-result">
-          <h3>Best choices you got!:</h3>
+          <h3>Best choice for you:</h3>
           <p className="highlight">{result.recommended_course}</p>
 
           <h3>Related Courses:</h3>
@@ -86,11 +83,10 @@ export default function CareerForm() {
             <a
               className="download-btn"
               href={`http://localhost:3000/${result.pdf_path}`}
-              download
               target="_blank"
               rel="noopener noreferrer"
             >
-              📥 Download Full PDF Roadmap
+              📄 View Full PDF Roadmap
             </a>
           )}
         </div>
